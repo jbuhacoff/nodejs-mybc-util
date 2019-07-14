@@ -25,6 +25,9 @@ In your Maven project:
 </dependency>
 ```
 
+The example only show `bcprov` but the tool builds all the BC jars:
+`bcmail`, `bcpg`, `bcpkix`, `bcprov-ext`, `bcprov`, `bctest`, and `bctls`.
+
 Dependencies
 ------------
 
