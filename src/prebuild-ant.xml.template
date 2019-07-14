@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bc-android-util-prebuild" default="prebuild">
+    <target name="prebuild">
+        <!-- providerName -->
+        <replace dir="${basedir}">
+            <include name="**/*.java"/>
+            <replacetoken><![CDATA["BC"]]></replacetoken>
+            <replacevalue><![CDATA["{{providerName}}"]]></replacevalue>
+        </replace>
+        <!-- packageName -->
+        <replace dir="${basedir}">
+            <include name="**/*.java"/>
+            <replacetoken><![CDATA["org.bouncycastle]]></replacetoken>
+            <replacevalue><![CDATA["{{packageName}}]]></replacevalue>
+        </replace>
+        <!-- displayName -->
+        <replace dir="${basedir}">
+            <include name="**/*.java"/>
+            <replacetoken><![CDATA["Bouncy ]]></replacetoken>
+            <replacevalue><![CDATA["{{displayName}} ]]></replacevalue>
+        </replace>
+        <replace dir="${basedir}">
+            <include name="**/*.java"/>
+            <replacetoken><![CDATA["BouncyCastle ]]></replacetoken>
+            <replacevalue><![CDATA["{{displayName}} ]]></replacevalue>
+        </replace>
+        <replace dir="${basedir}">
+            <include name="**/*.java"/>
+            <replacetoken><![CDATA["Bouncy Castle ]]></replacetoken>
+            <replacevalue><![CDATA["{{displayName}} ]]></replacevalue>
+        </replace>
+    </target>
+</project>
