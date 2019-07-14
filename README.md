@@ -60,7 +60,7 @@ with the pre-installed earlier BouncyCastle version.
 The `mybc` tool automates the process so you can easily generate modified `.jar`
 files to use in your project.
 
-An existing project [SpongyCastle](https://github.com/rtyley/spongycastle) 
+An existing project [SpongyCastle](https://github.com/rtyley/spongycastle) did
 this and even published the resulting artifacts to Maven Central, but 
 at the time of this writing, hasn't been updated for two years and is several 
 versions behind BouncyCastle. It's not clear if that effort will
