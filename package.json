@@ -48,10 +48,10 @@
   "dependencies": {
     "js-yaml": "^3.13.1",
     "mustache": "^3.0.1",
-    "yargs": "^13.2.4"
+    "yargs": "^13.3.0"
   },
   "devDependencies": {
-    "@commitlint/utils": "^8.0.0",
+    "@commitlint/utils": "^8.1.0",
     "@jbuhacoff/commitlint-config-type-enum": "^1.0.0",
     "lodash": "4.17.13"
   }
