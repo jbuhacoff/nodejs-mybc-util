@@ -116,7 +116,7 @@ SpongyCastle
 ------------
 
 If you're already using SpongyCastle, here is how to create a drop-in replacement
-with a newer version (the artifactIds may differ so you will need to update
+with a newer version (the `artifactId` may differ so you will need to update
 this in your dependency management system):
 
 ```
