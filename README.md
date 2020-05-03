@@ -21,7 +21,7 @@ In your Maven project:
 <dependency>
     <groupId>my.bouncycastle</groupId>
     <artifactId>bcprov-jdk15on</artifactId>
-    <version>1.64</version>
+    <version>1.65</version>
 </dependency>
 ```
 
@@ -107,7 +107,7 @@ In your Maven project:
 <dependency>
     <groupId>my.bouncycastle</groupId>
     <artifactId>bcprov-jdk15on</artifactId>
-    <version>1.64</version>
+    <version>1.65</version>
 </dependency>
 ```
 
@@ -131,7 +131,7 @@ In your Maven project:
 <dependency>
     <groupId>com.madgag.spongycastle</groupId>
     <artifactId>bcprov-jdk15on</artifactId>
-    <version>1.64</version>
+    <version>1.65</version>
 </dependency>
 ```
 
