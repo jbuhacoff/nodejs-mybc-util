@@ -53,6 +53,6 @@
   "devDependencies": {
     "@commitlint/utils": "^8.1.0",
     "@jbuhacoff/commitlint-config-type-enum": "^1.0.0",
-    "lodash": "4.17.13"
+    "lodash": "4.17.19"
   }
 }
