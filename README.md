@@ -135,6 +135,27 @@ In your Maven project:
 </dependency>
 ```
 
+Usage notes
+-----------
+
+Use the `--trace` option to see extra output:
+
+```
+mybc prebuild --trace
+./build15+
+mybc postbuild --trace
+```
+
+If you need to run `mybc prebuild` again, you have to reset the working directory first:
+
+1. delete the `build` directory
+2. reset the repository to the last commit before working directory changes
+3. run `mybc prebuild`, `./build15+`, then `mybc postbuild`
+
+If you need to run `mybc postbuild` again, you only need to reset part of the output directory first:
+
+1. delete everything under `build/mybc` *except* for `prebuild-ant.xml` and `prebuild-data.json`
+2. run `mybc postbuild`
 
 Related
 -------

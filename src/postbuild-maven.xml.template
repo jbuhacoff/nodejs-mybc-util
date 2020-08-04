@@ -44,9 +44,8 @@
     <dependencies>
         <dependency>
             <groupId>{{groupId}}</groupId>
-            <artifactId>{{artifactId}}</artifactId>
+            <artifactId>{{artifactId}}-mybc-intermediate</artifactId>
             <version>{{version}}</version>
-            <classifier>mybc-intermediate</classifier>
         </dependency>
     </dependencies>
 </project>
