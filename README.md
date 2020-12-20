@@ -12,8 +12,7 @@ git clone https://github.com/bcgit/bc-java && cd bc-java
 git checkout -b mybc-1.67 tags/r1rv67
 mybc prebuild
 export JDKPATH="$JAVA_HOME"
-chmod +x build15+
-./build15+
+sh ./build15+
 mybc postbuild
 ```
 
@@ -99,7 +98,7 @@ Here is a complete example with the default values specified:
 ```
 mybc prebuild --providerName MyBC --packageName my.bouncycastle --displayName MyBouncyCastle
 export JDKPATH="$JAVA_HOME"
-./build15+
+sh ./build15+
 mybc postbuild --groupId my.bouncycastle
 ```
 
@@ -123,7 +122,7 @@ this in your dependency management system):
 
 ```
 mybc prebuild --providerName SC --packageName org.spongycastle --displayName SpongyCastle
-./build15+
+sh ./build15+
 mybc postbuild --groupId com.madgag.spongycastle
 ```
 
@@ -144,15 +143,15 @@ Use the `--trace` option to see extra output:
 
 ```
 mybc prebuild --trace
-./build15+
+sh ./build15+
 mybc postbuild --trace
 ```
 
 If you need to run `mybc prebuild` again, you have to reset the working directory first:
 
 1. delete the `build` directory
-2. reset the repository to the last commit before working directory changes
-3. run `mybc prebuild`, `./build15+`, then `mybc postbuild`
+2. reset the repository to the last commit before working directory changes (`git reset --hard`)
+3. run `mybc prebuild`, `sh ./build15+`, then `mybc postbuild`
 
 If you need to run `mybc postbuild` again, you only need to reset part of the output directory first:
 
