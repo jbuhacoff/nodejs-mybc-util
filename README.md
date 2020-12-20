@@ -4,13 +4,15 @@ MyBC
 Brief example
 -------------
 
-In the command line:
+In the command line, to build BC v1.67:
 
 ```
 npm install -g @jbuhacoff/mybc
 git clone https://github.com/bcgit/bc-java && cd bc-java
+git checkout -b mybc-1.67 tags/r1rv67
 mybc prebuild
 export JDKPATH="$JAVA_HOME"
+chmod +x build15+
 ./build15+
 mybc postbuild
 ```
