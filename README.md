@@ -9,10 +9,10 @@ In the command line, to build BC v1.68:
 ```
 npm install -g @jbuhacoff/mybc
 git clone https://github.com/bcgit/bc-java && cd bc-java
-git checkout -b mybc-1.68 tags/r1rv68
+git checkout -b mybc-1.76 tags/r1rv76
 mybc prebuild
 export JDKPATH="$JAVA_HOME"
-sh ./build15+
+sh ./build1-8+
 mybc postbuild
 ```
 
@@ -21,8 +21,8 @@ In your Maven project:
 ```
 <dependency>
     <groupId>my.bouncycastle</groupId>
-    <artifactId>bcprov-jdk15on</artifactId>
-    <version>1.68</version>
+    <artifactId>bcprov-jdk18on</artifactId>
+    <version>1.76.0</version>
 </dependency>
 ```
 
@@ -98,7 +98,7 @@ Here is a complete example with the default values specified:
 ```
 mybc prebuild --providerName MyBC --packageName my.bouncycastle --displayName MyBouncyCastle
 export JDKPATH="$JAVA_HOME"
-sh ./build15+
+sh ./build1-8+
 mybc postbuild --groupId my.bouncycastle
 ```
 
@@ -107,8 +107,8 @@ In your Maven project:
 ```
 <dependency>
     <groupId>my.bouncycastle</groupId>
-    <artifactId>bcprov-jdk15on</artifactId>
-    <version>1.68</version>
+    <artifactId>bcprov-jdk18on</artifactId>
+    <version>1.76.0</version>
 </dependency>
 ```
 
@@ -122,7 +122,7 @@ this in your dependency management system):
 
 ```
 mybc prebuild --providerName SC --packageName org.spongycastle --displayName SpongyCastle
-sh ./build15+
+sh ./build1-8+
 mybc postbuild --groupId com.madgag.spongycastle
 ```
 
@@ -131,8 +131,8 @@ In your Maven project:
 ```
 <dependency>
     <groupId>com.madgag.spongycastle</groupId>
-    <artifactId>bcprov-jdk15on</artifactId>
-    <version>1.68</version>
+    <artifactId>bcprov-jdk18on</artifactId>
+    <version>1.76.0</version>
 </dependency>
 ```
 
@@ -143,7 +143,7 @@ Use the `--trace` option to see extra output:
 
 ```
 mybc prebuild --trace
-sh ./build15+
+sh ./build1-8+
 mybc postbuild --trace
 ```
 
@@ -151,12 +151,66 @@ If you need to run `mybc prebuild` again, you have to reset the working director
 
 1. delete the `build` directory
 2. reset the repository to the last commit before working directory changes (`git reset --hard`)
-3. run `mybc prebuild`, `sh ./build15+`, then `mybc postbuild`
+3. run `mybc prebuild`, `sh ./build1-8+`, then `mybc postbuild`
 
 If you need to run `mybc postbuild` again, you only need to reset part of the output directory first:
 
 1. delete everything under `build/mybc` *except* for `prebuild-ant.xml` and `prebuild-data.json`
 2. run `mybc postbuild`
+
+Cygwin
+------
+
+Check that you have the `PROGRAMFILES` environment variable defined:
+
+```sh
+echo $PROGRAMFILES
+```
+
+Expected output:
+
+```
+C:\Program Files
+```
+
+Declare the following environment variables (adjust paths and versions for your own system):
+
+```sh
+export JAVA_HOME="$PROGRAMFILES\Java\jdk-19"
+export ANT_HOME="$PROGRAMFILES\Apache\apache-ant-1.10.14"
+export MAVEN_HOME="$PROGRAMFILES\Apache\Apache-maven-3.9.4"
+export PATH="$PATH:$JAVA_HOME\bin:$ANT_HOME\bin:$MAVEN_HOME\bin"
+```
+
+The `mybc prebuild` command doesn't currently work on Cygwin because it detects Windows
+and generates a command line that works in a Windows console but not in Cygwin. As a
+workaround, run `mybc prebuild --trace` and it will at least copy the required files
+and then show the command line that doesn't work, something like this (the path will vary
+on your system):
+
+```
+cmd /c ant -f build\mybc\prebuild-ant.xml -Dbasedir=C:\Users\sparky\Workspace\bc-java
+```
+
+Rewrite that command and execute it like this in the Cygwin shell:
+
+```sh
+ant -f build/mybc/prebuild-ant.xml -Dbasedir=/Users/sparky/Workspace/bc-java
+```
+
+Expected output:
+
+```
+Buildfile: C:\Users\sparky\Workspace\bc-java\build\mybc\prebuild-ant.xml
+
+prebuild:
+
+BUILD SUCCESSFUL
+Total time: 43 seconds
+```
+
+Then continue to run the build and postbuild steps as shown at the beginning of this document.
+
 
 Related
 -------

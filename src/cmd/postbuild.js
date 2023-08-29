@@ -208,10 +208,11 @@ exports.handler = function handler(argv) {
             'jdk1.3': 'jdk13',
             'jdk1.4': 'jdk14',
             'jdk1.5': 'jdk15on',
+            'jdk1.8': 'jdk18on',
         };
 
         const queue = [];
-        const jdkList = Object.getOwnPropertyNames(jdkMap); // i.e. [ "jdk1.3", "jdk1.4", "jdk1.5" ]
+        const jdkList = Object.getOwnPropertyNames(jdkMap); // i.e. [ "jdk1.3", "jdk1.4", "jdk1.5", "jdk1.8" ]
         for (let i = 0; i < jdkList.length; i += 1) {
             const jdk = jdkList[i];
             const jarpath = path.join(process.cwd(), 'build', 'artifacts', jdk, 'jars');

@@ -1,6 +1,6 @@
 {
   "name": "@jbuhacoff/mybc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Automates custom packaging of BouncyCastle libraries for Android apps or other environments that include earlier versions of BouncyCastle that would conflict with the required version",
   "main": "src/mybc-util.js",
   "files": [
@@ -51,7 +51,7 @@
     "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
+    "@commitlint/cli": "^17.7.1",
     "@libertyio/commitlint-config": "^1.0.0",
     "@libertyio/commitlint-config-type-enum": "^1.0.0",
     "eslint": "^7.16.0",
