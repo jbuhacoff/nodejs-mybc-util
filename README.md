@@ -4,7 +4,7 @@ MyBC
 Brief example
 -------------
 
-In the command line, to build BC v1.68:
+In the command line, to build BC v1.76:
 
 ```
 npm install -g @jbuhacoff/mybc
