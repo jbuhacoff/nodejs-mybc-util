@@ -135,7 +135,7 @@ function processJarfile(context) {
             runMaven([
                 'package',
                 '-f',
-                context.mavenfile,
+                context.mavenfilePostbuild,
             ]);
         } catch (err) {
             context.error = true;
@@ -149,7 +149,7 @@ function processJarfile(context) {
 
             // install to local maven repository so it's ready to use
             // console.log('Installing to local Maven repository: %s:%s:%s', context.groupId, context.artifactId, context.version);
-            log.info(`Installing to local Maven repository: ${context.groupId} ${context.artifactId} ${context.version}`);
+            log.info(`Installing to local Maven repository: ${context.groupId} ${context.artifactId} ${context.version} with release pom.xml: ${context.mavenfileRelease}`);
             try {
                 runMaven([
                     'install:install-file',
@@ -158,6 +158,7 @@ function processJarfile(context) {
                     `-Dversion=${context.version}`,
                     '-Dpackaging=jar',
                     `-Dfile=${context.filepath2}`,
+					`-DpomFile=${context.mavenfileRelease}`,
                     '-DgeneratePom=false',
                 ]);
             } catch (err) {
@@ -203,7 +204,7 @@ exports.handler = function handler(argv) {
         const data = JSON.parse(datajson);
 
         // generate one maven file per artifact (./build/artifacts/jdk1.5/jars/bcmail-jdk15on-162.jar)
-        const artifacts = ['bcmail', 'bcpg', 'bcpkix', 'bcprov-ext', 'bcprov', 'bctest', 'bctls'];
+        const artifacts = ['bcjmail', 'bcmail', 'bcpg', 'bcpkix', 'bcprov-ext', 'bcprov', 'bctest', 'bctls', 'bcutil'];
         const jdkMap = {
             'jdk1.3': 'jdk13',
             'jdk1.4': 'jdk14',
@@ -229,17 +230,29 @@ exports.handler = function handler(argv) {
             }
         }
 
-        // generate a maven xml file for each jar we will process
-        const template = fs.readFileSync(path.join(__dirname, '..', 'postbuild-maven.xml.template')).toString();
+        // generate a maven xml file for each jar we will process with the shade plugin
+        const postbuildTemplate = fs.readFileSync(path.join(__dirname, '..', 'postbuild-maven.xml.template')).toString();
         for (let i = 0; i < queue.length; i += 1) {
             const tmpdata = {
                 ...data, ...queue[i], groupId: argv.groupId, version: bcversion, outfile: queue[i].filepath2,
             };
-            const xml = mustache.render(template, tmpdata);
+            const xml = mustache.render(postbuildTemplate, tmpdata);
             const mavenfile = path.join(targetdir, `${queue[i].artifactId}-${bcsuffix}-postbuild-maven.xml`);
             fs.writeFileSync(mavenfile, xml);
-            queue[i].mavenfile = mavenfile;
+            queue[i].mavenfilePostbuild = mavenfile;
         }
+		
+		// generate a maven release pom.xml file for each jar to use for publishing
+        const releaseTemplate = fs.readFileSync(path.join(__dirname, '..', 'release-maven.xml.template')).toString();
+        for (let i = 0; i < queue.length; i += 1) {
+            const tmpdata = {
+                ...data, ...queue[i], groupId: argv.groupId, version: bcversion,
+            };
+            const xml = mustache.render(releaseTemplate, tmpdata);
+            const mavenfile = path.join(targetdir, `${queue[i].artifactId}-${bcsuffix}-release-maven.xml`);
+            fs.writeFileSync(mavenfile, xml);
+            queue[i].mavenfileRelease = mavenfile;
+        }		
 
         // complete the process for each of the jar files
         for (let i = 0; i < queue.length; i += 1) {

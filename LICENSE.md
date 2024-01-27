@@ -1,6 +1,6 @@
 BSD 2-Clause License
 
-Copyright (c) 2019, Jonathan Buhacoff
+Copyright (c) 2019-2024 Jonathan Buhacoff
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

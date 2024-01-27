@@ -4,12 +4,12 @@ MyBC
 Brief example
 -------------
 
-In the command line, to build BC v1.76:
+In the command line, to build BC v1.77:
 
 ```
 npm install -g @jbuhacoff/mybc
 git clone https://github.com/bcgit/bc-java && cd bc-java
-git checkout -b mybc-1.76 tags/r1rv76
+git checkout -b mybc-1.77 tags/r1rv77
 mybc prebuild
 export JDKPATH="$JAVA_HOME"
 sh ./build1-8+
@@ -22,12 +22,12 @@ In your Maven project:
 <dependency>
     <groupId>my.bouncycastle</groupId>
     <artifactId>bcprov-jdk18on</artifactId>
-    <version>1.76.0</version>
+    <version>1.77.0</version>
 </dependency>
 ```
 
 The example only show `bcprov` but the tool builds all the BC jars:
-`bcmail`, `bcpg`, `bcpkix`, `bcprov-ext`, `bcprov`, `bctest`, and `bctls`.
+`bcjmail`, `bcmail`, `bcpg`, `bcpkix`, `bcprov-ext`, `bcprov`, `bctest`, `bctls`, and `bcutil`.
 
 Dependencies
 ------------
@@ -108,7 +108,7 @@ In your Maven project:
 <dependency>
     <groupId>my.bouncycastle</groupId>
     <artifactId>bcprov-jdk18on</artifactId>
-    <version>1.76.0</version>
+    <version>1.77.0</version>
 </dependency>
 ```
 
@@ -132,7 +132,7 @@ In your Maven project:
 <dependency>
     <groupId>com.madgag.spongycastle</groupId>
     <artifactId>bcprov-jdk18on</artifactId>
-    <version>1.76.0</version>
+    <version>1.77.0</version>
 </dependency>
 ```
 
@@ -224,3 +224,17 @@ http://bouncy-castle.1462172.n4.nabble.com/Removing-BC-from-Android-td2074914.ht
 Discussion about whether to continue releasing SpongyCastle:
 
 https://github.com/rtyley/spongycastle/issues/34
+
+Install MyBC from source
+------------------------
+
+In the introduction, the following command is used to install `MyBC`
+from the NPM repository:
+
+
+```sh
+npm install -g @jbuhacoff/mybc
+```
+
+If you prefer to download the source code to `MyBC` and install it
+yourself, refer to the [developer documentation](DEVELOPER.md).
