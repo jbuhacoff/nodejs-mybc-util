@@ -1,12 +1,12 @@
 {
   "name": "@jbuhacoff/mybc",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "@jbuhacoff/mybc",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "license": "BSD-2-Clause",
       "dependencies": {
         "@libertyio/log-node": "^0.1.0",
