@@ -1,6 +1,6 @@
 {
   "name": "@jbuhacoff/mybc",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Automates custom packaging of BouncyCastle libraries for Android apps or other environments that include earlier versions of BouncyCastle that would conflict with the required version",
   "main": "src/mybc-util.js",
   "files": [

@@ -36,7 +36,7 @@ To install the tool from the source directory:
 
 ```sh
 npm pack
-sudo npm install -g jbuhacoff-mybc-1.0.6.tgz
+sudo npm install -g jbuhacoff-mybc-1.0.7.tgz
 ```
 
 Note that the archive file name with version number on the second line is
@@ -48,4 +48,13 @@ You can then check it was installed successfully:
 which mybc
 ```
 
+Commit and push changes
+-----------------------
+
+```sh
+git add .
+git commit -m "Updated for BC v1.78.1"
+git tag v1.0.7
+git push origin --tags
+```
 

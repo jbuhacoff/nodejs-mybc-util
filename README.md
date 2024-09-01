@@ -4,12 +4,12 @@ MyBC
 Brief example
 -------------
 
-In the command line, to build BC v1.78:
+In the command line, to build BC v1.78.1:
 
 ```
 npm install -g @jbuhacoff/mybc
 git clone https://github.com/bcgit/bc-java && cd bc-java
-git checkout -b mybc-1.78 tags/r1rv78
+git checkout -b mybc-1.78.1 tags/r1rv78v1
 mybc prebuild
 export JDKPATH="$JAVA_HOME"
 sh ./build1-8+
@@ -22,7 +22,7 @@ In your Maven project:
 <dependency>
     <groupId>my.bouncycastle</groupId>
     <artifactId>bcprov-jdk18on</artifactId>
-    <version>1.78.0</version>
+    <version>1.78.1</version>
 </dependency>
 ```
 
@@ -108,7 +108,7 @@ In your Maven project:
 <dependency>
     <groupId>my.bouncycastle</groupId>
     <artifactId>bcprov-jdk18on</artifactId>
-    <version>1.78.0</version>
+    <version>1.78.1</version>
 </dependency>
 ```
 
@@ -132,7 +132,7 @@ In your Maven project:
 <dependency>
     <groupId>com.madgag.spongycastle</groupId>
     <artifactId>bcprov-jdk18on</artifactId>
-    <version>1.78.0</version>
+    <version>1.78.1</version>
 </dependency>
 ```
 
